@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block head %}
+<link href="{% static 'css/style.css' %}" rel="stylesheet">
+{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <form action="." method="POST">
+            {% csrf_token %}
+            <div class="form-outline mb-4">
+                <input type="email" name="username" class="form-control" placeholder="Email address" required>
+            </div>
+            <div class="form-outline mb-4">
+                <input type="password" name="password" class="form-control" placeholder="Password" required>
+            </div>
+            {% for message in messages %}
+                <p class="error-text">{{ message }}</p>
+            {% endfor %}
+            <div class="row mb-4">
+                <div class="col d-flex justify-content-center">
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" checked>
+                    <label class="form-check-label"> Remember me </label>
+                  </div>
+                </div>
+                <div class="col">
+                  <pre>                    </pre>
+                </div>
+            </div>
+            <input type="submit" class="btn btn-primary btn-block mb-4" style="width: 100%;">
+            <div class="text-center">
+                <p>Not a member? <a href="/accounts/register">Register</a></p>
+            </div>
+        </form>
+    </div>
+{% endblock %}

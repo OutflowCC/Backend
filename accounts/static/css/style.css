@@ -1,0 +1,14 @@
+.container {
+    left: 50%;
+    max-width: 1500px;
+    min-width: 350px;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 20vw;
+}
+
+.error-text {
+    color: red;
+    text-align: center;
+}

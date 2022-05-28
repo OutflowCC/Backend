@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block head %}
+<link href="{% static 'css/style.css' %}" rel="stylesheet">
+{% endblock %}
+
+{% block body %}
+<div class="container">
+        <form action="." method="POST">
+            {% csrf_token %}
+            <div class="form-outline mb-4">
+                <input type="Username" name="username" class="form-control" placeholder="Username" required>
+            </div>
+            <div class="form-outline mb-4">
+                <input type="email" name="email" class="form-control" placeholder="Email address" required>
+            </div>
+            <div class="form-outline mb-4">
+                <input type="password" name="password1" class="form-control" placeholder="Password 1" required>
+            </div>
+            <div class="form-outline mb-4">
+                <input type="password" name="password2" class="form-control" placeholder="Password 2" required>
+            </div>
+            {% for message in messages %}
+                <p class="error-text">{{ message }}</p>
+            {% endfor %}
+            <input type="submit" class="btn btn-primary btn-block mb-4" style="width: 100%;">
+            <div class="text-center">
+                <p>Already registered? <a href="/accounts/login/">Login</a></p>
+            </div>
+        </form>
+    </div>
+{% endblock %}
